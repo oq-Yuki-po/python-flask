@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: flask-db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_VERSION
+      - TZ
+    env_file:
+      - .env
+    volumes:
+      - /Users/${USER}/Volumes/docker/postgres:/var/lib/postgresql/data
+  app:
+    image: flask-python:develop
+    container_name: flask-app
+    volumes:
+        - ./../app:/usr/src/app
+    env_file:
+      - .env
+    tty: true
+    environment:
+      - TZ
