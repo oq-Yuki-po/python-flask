@@ -14,6 +14,7 @@ marshmallow = "^3.5.1"
 marshmallow-dataclass = "^7.5.1"
 dataclasses-json = "^0.4.2"
 uwsgi = "^2.0.18"
+Flask-RESTful = "^0.3.8"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.4.4"
