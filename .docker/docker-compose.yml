@@ -19,10 +19,11 @@ services:
   app:
     image: flask-python:develop
     container_name: flask-app
+    ports:
+      - 8080:8080
     volumes:
-        - ./../app:/usr/src/app
+      - ./../app:/usr/src/app
     env_file:
       - .env
-    tty: true
     environment:
       - TZ

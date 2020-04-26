@@ -4,7 +4,8 @@
 FROM python:3.8.2-slim
 
 RUN apt-get update \
-    && apt-get upgrade -y
+    && apt-get upgrade -y \
+    && apt-get install -y build-essential python-dev
 
 RUN pip install poetry
 
@@ -14,3 +15,5 @@ COPY app/poetry.lock app/pyproject.toml ./
 
 RUN poetry config virtualenvs.create false \
     && poetry install
+
+CMD ["uwsgi","--ini","/usr/src/app/uwsgi.ini"]
