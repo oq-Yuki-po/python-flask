@@ -438,6 +438,14 @@ mypy-extensions = ">=0.3.0"
 typing-extensions = ">=3.7.4"
 
 [[package]]
+category = "main"
+description = "The uWSGI server"
+name = "uwsgi"
+optional = false
+python-versions = "*"
+version = "2.0.18"
+
+[[package]]
 category = "dev"
 description = "Measures number of Terminal column cells of wide-character codes"
 name = "wcwidth"
@@ -466,7 +474,7 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "515d5a95def9373fb394b7012dce61057704dd1317bb157c622bc685a74d5268"
+content-hash = "086811638d8117f19efe1f2923af61f5d8c25c4fa0ee2eeaa9a2d8c69ed61f46"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -689,6 +697,9 @@ typing-inspect = [
     {file = "typing_inspect-0.5.0-py2-none-any.whl", hash = "sha256:75c97b7854426a129f3184c68588db29091ff58e6908ed520add1d52fc44df6e"},
     {file = "typing_inspect-0.5.0-py3-none-any.whl", hash = "sha256:c6ed1cd34860857c53c146a6704a96da12e1661087828ce350f34addc6e5eee3"},
     {file = "typing_inspect-0.5.0.tar.gz", hash = "sha256:811b44f92e780b90cfe7bac94249a4fae87cfaa9b40312765489255045231d9c"},
+]
+uwsgi = [
+    {file = "uwsgi-2.0.18.tar.gz", hash = "sha256:4972ac538800fb2d421027f49b4a1869b66048839507ccf0aa2fda792d99f583"},
 ]
 wcwidth = [
     {file = "wcwidth-0.1.9-py2.py3-none-any.whl", hash = "sha256:cafe2186b3c009a04067022ce1dcd79cb38d8d65ee4f4791b8888d6599d1bbe1"},

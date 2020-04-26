@@ -13,6 +13,7 @@ factory-boy = "^2.12.0"
 marshmallow = "^3.5.1"
 marshmallow-dataclass = "^7.5.1"
 dataclasses-json = "^0.4.2"
+uwsgi = "^2.0.18"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.4.4"
