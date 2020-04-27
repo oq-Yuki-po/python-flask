@@ -1,12 +1,9 @@
-import sys
-print(sys.path)
-
 from sqlalchemy import Column, String, ForeignKey, Integer, DateTime
 from sqlalchemy.orm import relationship
 
 from database.setting import ENGINE
-from database.models.ModelBase import DefaultBase
-from database.models.ModelUser import User
+from database.models.base import DefaultBase
+from database.models.user import User
 
 class File(DefaultBase):
     """

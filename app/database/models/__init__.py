@@ -1,2 +1,2 @@
-from database.models.ModelFile import File
-from database.models.ModelUser import User
+from database.models.file import File
+from database.models.user import User
