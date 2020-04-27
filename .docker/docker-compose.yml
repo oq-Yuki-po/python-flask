@@ -3,7 +3,7 @@ version: "3"
 services:
   db:
     image: postgres:${POSTGRES_VERSION}
-    container_name: flask-db
+    container_name: ${POSTGRES_URL}
     ports:
       - 5432:5432
     environment:
