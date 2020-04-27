@@ -11,6 +11,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_DB
       - POSTGRES_VERSION
+      - POSTGRES_URL
       - TZ
     env_file:
       - .env
