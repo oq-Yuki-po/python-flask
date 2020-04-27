@@ -7,7 +7,7 @@ from database.models.base import DefaultBase
 
 class User(DefaultBase):
     """
-    FileModel
+    UserModel
     """
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, autoincrement=True)
