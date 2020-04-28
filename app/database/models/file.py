@@ -16,8 +16,8 @@ class File(DefaultBase):
     name = Column(String(255))
     users = relationship('User', backref="files")
 
-    def __init__(self, user_id, name):
-        self.user_id = user_id
+    def __init__(self, users, name):
+        self.users = users
         self.name = name
 
 
