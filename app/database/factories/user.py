@@ -1,0 +1,17 @@
+import factory
+from factory.alchemy import SQLAlchemyModelFactory
+
+from database.setting import session
+from database.models import User
+
+
+class UserFactory(SQLAlchemyModelFactory):
+    class Meta:
+
+        model = User
+
+        sqlalchemy_session = session
+
+        sqlalchemy_session_persistence = 'commit'
+
+    name = factory.Faker('user_name', locale='ja_JP')
