@@ -13,13 +13,13 @@ RUN apt-get update \
 
 RUN pip install poetry
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/flask/app
 
 COPY app/poetry.lock app/pyproject.toml ./
 
 RUN poetry config virtualenvs.create false \
     && poetry install
 
-ENV PYTHONPATH "${PYTHONPATH}:/usr/src/app"
+ENV PYTHONPATH "${PYTHONPATH}:/usr/src/flask/app"
 
-CMD ["uwsgi","--ini","/usr/src/app/uwsgi.ini"]
+CMD ["uwsgi","--ini","uwsgi.ini"]
