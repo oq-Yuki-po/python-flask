@@ -3,6 +3,7 @@ from dataclasses_json import dataclass_json
 from marshmallow_dataclass import dataclass
 import marshmallow.validate
 
+
 @dataclass_json
 @dataclass
 class FileDetail:
