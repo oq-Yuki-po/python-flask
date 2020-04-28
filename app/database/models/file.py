@@ -5,6 +5,7 @@ from database.setting import ENGINE
 from database.models.base import DefaultBase
 from database.models.user import User
 
+
 class File(DefaultBase):
     """
     FileModel
@@ -13,8 +14,7 @@ class File(DefaultBase):
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String(255))
-    userss = relationship('User', backref="files")
-
+    users = relationship('User', backref="files")
 
     def __init__(self, user_id, name):
         self.user_id = user_id
