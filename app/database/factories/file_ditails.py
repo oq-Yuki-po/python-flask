@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
@@ -18,3 +20,5 @@ class FileDetailFactory(SQLAlchemyModelFactory):
     files = factory.SubFactory(FileFactory)
     row = factory.Sequence(lambda n: n)
     contents = factory.Faker('text', max_nb_chars=255, locale='ja_JP')
+    created_at = datetime.now
+    updated_at = datetime.now

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
@@ -15,3 +17,5 @@ class UserFactory(SQLAlchemyModelFactory):
         sqlalchemy_session_persistence = 'commit'
 
     name = factory.Faker('user_name', locale='ja_JP')
+    created_at = datetime.now()
+    updated_at = datetime.now()

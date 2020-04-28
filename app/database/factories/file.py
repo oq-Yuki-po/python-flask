@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
@@ -17,3 +19,5 @@ class FileFactory(SQLAlchemyModelFactory):
 
     name = factory.Faker('file_name', extension='txt')
     users = factory.SubFactory(UserFactory)
+    created_at = datetime.now()
+    updated_at = datetime.now()
