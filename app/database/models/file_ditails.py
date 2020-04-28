@@ -17,8 +17,8 @@ class FileDetail(DefaultBase):
     contents = Column(String(255)) 
     files = relationship('File', backref="file_details")
 
-    def __init__(self, file_id, row, contents):
-        self.file_id = file_id
+    def __init__(self, files, row, contents):
+        self.files = files
         self.row = row
         self.contents = contents
 
