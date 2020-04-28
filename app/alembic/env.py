@@ -11,8 +11,6 @@ from config import Base
 from database.setting import DB_Base, initialize_db
 import database.models
 
-logger = logging.getLogger('alembic')
-
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
