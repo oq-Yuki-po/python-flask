@@ -1,1 +1,19 @@
 GET http://localhost:8080
+
+
+### 
+
+POST http://localhost:8080/files  HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "investment.txt",
+  "user_name": "akemi36",
+  "details": [
+    { "row": 1, "contents": "コーラス" },
+    { "row": 2, "contents": "トス" },
+    { "row": 3, "contents": "舗装" },
+    { "row": 4, "contents": "部隊" },
+    { "row": 5, "contents": "ニュース" }
+  ]
+}
