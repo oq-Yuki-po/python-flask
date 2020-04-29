@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from sqlalchemy import Column, DateTime
 
@@ -9,6 +10,7 @@ class DefaultBase(DB_Base):
     DefaultBase
     """
     __abstract__ = True
+    __table_args__ = {'schema' : os.environ.get('DB_SCHEMA', None) }
 
     created_at = Column(DateTime, default=datetime.now, nullable=False)
     updated_at = Column(DateTime, default=datetime.now, nullable=False)
