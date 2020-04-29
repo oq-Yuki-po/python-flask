@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from database.setting import ENGINE
 from database.models.base import DefaultBase
+from database.models import User
 
 
 class File(DefaultBase):
@@ -10,8 +11,9 @@ class File(DefaultBase):
     FileModel
     """
     __tablename__ = 'files'
+
     id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    user_id = Column(Integer, ForeignKey(User.id))
     name = Column(String(255))
     users = relationship('User', backref="files")
 
