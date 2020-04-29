@@ -11,18 +11,18 @@ def initialize_db():
         create_database(engine.url)
 
 
-ENGINE = create_engine(
+Engine = create_engine(
     Base.DATABASE,
     encoding="utf-8",
     echo=True
 )
 
-session = scoped_session(
+Session = scoped_session(
     # ORM実行時の設定。自動コミットするか、自動反映するなど。
     sessionmaker(
         autocommit=False,
         autoflush=False,
-        bind=ENGINE
+        bind=Engine
     )
 )
 

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer
 
-from database.models.setting import ENGINE
+from database.models.setting import Engine
 from database.models.base import DefaultBase
 
 
@@ -19,4 +19,4 @@ class User(DefaultBase):
 
 
 if __name__ == "__main__":
-    DefaultBase.metadata.create_all(bind=ENGINE)
+    DefaultBase.metadata.create_all(bind=Engine)

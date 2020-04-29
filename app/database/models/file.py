@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
-from database.models.setting import ENGINE
+from database.models.setting import Engine
 from database.models.base import DefaultBase
 from database.models import User
 
@@ -24,4 +24,4 @@ class File(DefaultBase):
 
 
 if __name__ == "__main__":
-    DefaultBase.metadata.create_all(bind=ENGINE)
+    DefaultBase.metadata.create_all(bind=Engine)
