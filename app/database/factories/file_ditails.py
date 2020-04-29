@@ -18,7 +18,7 @@ class FileDetailFactory(SQLAlchemyModelFactory):
         sqlalchemy_session_persistence = 'commit'
 
     files = factory.SubFactory(FileFactory)
-    row = factory.Sequence(lambda n: n)
+    row = factory.Sequence(lambda n: n+1)
     contents = factory.Faker('text', max_nb_chars=255, locale='ja_JP')
-    created_at = datetime.now
-    updated_at = datetime.now
+    created_at = datetime.now()
+    updated_at = datetime.now()
