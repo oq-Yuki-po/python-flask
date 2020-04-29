@@ -2,9 +2,17 @@ import os
 
 from sqlalchemy.schema import CreateSchema, DropSchema
 from sqlalchemy_utils import database_exists, create_database
+from flask.testing import FlaskClient
 import pytest
 
-from database.models.setting import Engine, DB_Base
+from main import app
+from database.models.setting import Engine, DB_Base, Session
+
+
+class CustomClient(FlaskClient):
+    def open(self, *args, **kwargs):
+        kwargs.setdefault('content_type', 'application/json')
+        return super().open(*args, **kwargs)
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -36,3 +44,20 @@ def create_all_tables(request):
     request.addfinalizer(drop_all_tables)
 
     return create_all_tables
+
+
+@pytest.fixture(autouse=True)
+def app_client():
+    app.test_client_class = CustomClient
+    with app.test_client() as client:
+        with app.app_context():
+            yield client
+
+@pytest.fixture()
+def count_records():
+    def _count_records(model):
+        session = Session()
+        count = session.query(model).count()
+        session.close()
+        return count
+    return _count_records
