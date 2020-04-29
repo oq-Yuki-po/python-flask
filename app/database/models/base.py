@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from sqlalchemy import Column, DateTime
 
-from database.setting import DB_Base
+from database.models.setting import DB_Base
 
 
 class DefaultBase(DB_Base):

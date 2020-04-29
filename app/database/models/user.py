@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer
 
-from database.setting import ENGINE
+from database.models.setting import ENGINE
 from database.models.base import DefaultBase
 
 

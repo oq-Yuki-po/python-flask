@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
-from database.setting import ENGINE
+from database.models.setting import ENGINE
 from database.models.base import DefaultBase
 from database.models import File
 
