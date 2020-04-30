@@ -17,6 +17,8 @@ uwsgi = "^2.0.18"
 Flask-RESTful = "^0.3.8"
 psycopg2 = "^2.8.5"
 SQLAlchemy-Utils = "^0.36.3"
+flask_api = "^2.0"
+celery = "^4.4.2"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.4.4"
