@@ -18,11 +18,12 @@ class FileDetail(ModelBase):
     files = relationship('File')
 
     def __init__(self, files, row, contents, created_at, updated_at):
-        super().__init__(created_at, updated_at)
         self.files = files
         self.row = row
         self.contents = contents
+        self.created_at = created_at
+        self.updated_at = updated_at
 
 
 if __name__ == "__main__":
-    DefaultBase.metadata.create_all(bind=Engine)
+    ModelBase.metadata.create_all(bind=Engine)

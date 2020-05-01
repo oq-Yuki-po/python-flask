@@ -14,9 +14,10 @@ class User(ModelBase):
     name = Column(String(255))
 
     def __init__(self, name, created_at, updated_at):
-        super().__init__(created_at, updated_at)
         self.name = name
+        self.created_at = created_at
+        self.updated_at = updated_at
 
 
 if __name__ == "__main__":
-    DefaultBase.metadata.create_all(bind=Engine)
+    ModelBase.metadata.create_all(bind=Engine)
