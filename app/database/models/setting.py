@@ -1,24 +1,29 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy_utils import database_exists, create_database
+
 from config import Base
+from api.responses.errors import DataBaseConnecitonError
 
 
 def initialize_db():
-    engine = create_engine(Base.DATABASE)
-    if not database_exists(engine.url):
-        create_database(engine.url)
+    try:
+        engine = create_engine(Base.DATABASE)
+        if not database_exists(engine.url):
+            create_database(engine.url)
+    except SQLAlchemyError:
+        raise DataBaseConnecitonError()
 
 
 Engine = create_engine(
     Base.DATABASE,
     encoding="utf-8",
-    echo=True
+    echo=False
 )
 
 Session = scoped_session(
-    # ORM実行時の設定。自動コミットするか、自動反映するなど。
     sessionmaker(
         autocommit=False,
         autoflush=False,
