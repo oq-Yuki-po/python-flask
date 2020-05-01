@@ -1,3 +1,3 @@
-from database.models.user import User
-from database.models.file import File
-from database.models.file_ditails import FileDetail
+from .user import User
+from .file import File
+from .file_ditails import FileDetail

@@ -1,3 +1,3 @@
-from database.factories.user import UserFactory
-from database.factories.file import FileFactory
-from database.factories.file_ditails import FileDetailFactory
+from .user import UserFactory
+from .file import FileFactory
+from .file_ditails import FileDetailFactory
