@@ -1,8 +1,8 @@
 import typing as tp
 
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError, DataError
 from api.requests.classes import File as ApiFile
-from api.responses.errors import DataBaseConnecitonError
+from api.responses.errors import DataBaseConnecitonError, DataBaseDataError
 from database.factories import UserFactory, FileFactory, FileDetailFactory
 from database.models.setting import Session
 
@@ -30,7 +30,9 @@ class FileService():
             session.commit()
 
             result = {'message': 'Success'}
+        except DataError:
+            raise DataBaseDataError
         except SQLAlchemyError:
-            raise DataBaseConnecitonError()
+            raise DataBaseConnecitonError
 
         return result

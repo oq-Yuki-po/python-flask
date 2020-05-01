@@ -19,9 +19,9 @@ class FileApi(Resource):
             file = File.Schema().loads(json.dumps(body))
         except ValidationError:
             current_app.logger.error(f'request : {request.data}')
-            raise RequestJsonValidationError()
+            raise RequestJsonValidationError
         except Exception:
-            raise InternalServerError()
+            raise InternalServerError
 
         file_servise = FileService(file)
 
