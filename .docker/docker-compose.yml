@@ -23,8 +23,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./../app:/usr/src/flask/app
-      - ./../tests:/usr/src/flask/test
+      - ./../:/usr/src/flask
     env_file:
       - .env
     environment:
