@@ -1,6 +1,6 @@
 import factory
 
-from api_requests.classes import FileDetail
+from api.requests.classes import FileDetail
 
 
 class FileDetailFactory(factory.Factory):

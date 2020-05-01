@@ -4,7 +4,7 @@ from dataclasses_json import dataclass_json
 from marshmallow_dataclass import dataclass
 import marshmallow.validate
 
-from api_requests.classes import FileDetail
+from .file_detail import FileDetail
 
 
 @dataclass_json

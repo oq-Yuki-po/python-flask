@@ -1,0 +1,5 @@
+ROUTES = {
+    'FILE': {
+        'POST': '/file'
+    }
+}
