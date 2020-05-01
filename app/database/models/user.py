@@ -1,7 +1,6 @@
 from sqlalchemy import Column, String, Integer
 
 from database.models.setting import Engine, ModelBase
-from database.models.base import DefaultBase
 
 
 class User(ModelBase):
