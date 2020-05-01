@@ -1,21 +1,22 @@
-import os
-from flask import Flask
+from flask_restful import Api
+from database.models.setting import initialize_db
+from controllers import initialize_routes
+from setup import make_flask_app, before_request, after_request, set_logger
+from api.responses import errors
 
-app = Flask(__name__)
+app = make_flask_app(__name__)
 
-config_type = {
-    "development":  "config.Development",
-    "testing": "config.Testing",
-}
+api = Api(app, errors=errors, catch_all_404s=True, prefix=app.config.get('API_VERSION'))
 
-app.config.from_object(config_type.get(os.getenv('FLASK_APP_ENV', 'development')))
+set_logger(app)
 
+initialize_db()
 
-@app.route('/')
-def hello_world():
+initialize_routes(api)
 
-    return "Hello World"
+app.before_request(before_request)
 
+app.after_request(after_request)
 
 if __name__ == '__main__':
     app.run()
