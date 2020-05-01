@@ -1,12 +1,11 @@
 from sqlalchemy import Column, String, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
-from database.models.setting import Engine
-from database.models.base import DefaultBase
+from database.models.setting import Engine, ModelBase
 from database.models import User
 
 
-class File(DefaultBase):
+class File(ModelBase):
     """
     FileModel
     """

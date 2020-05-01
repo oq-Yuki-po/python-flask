@@ -6,7 +6,7 @@ from flask.testing import FlaskClient
 import pytest
 
 from main import app
-from database.models.setting import Engine, DB_Base, Session
+from database.models.setting import Engine, ModelBase, Session
 
 
 class CustomClient(FlaskClient):
@@ -36,10 +36,10 @@ def create_test_environment(request):
 
 @pytest.fixture()
 def create_all_tables(request):
-    DB_Base.metadata.create_all(Engine)
+    ModelBase.metadata.create_all(Engine)
 
     def drop_all_tables():
-        DB_Base.metadata.drop_all(Engine)
+        ModelBase.metadata.drop_all(Engine)
 
     request.addfinalizer(drop_all_tables)
 

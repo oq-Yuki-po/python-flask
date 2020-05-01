@@ -3,7 +3,7 @@ import os
 import logging
 
 
-class Base(object):
+class BaseConfig(object):
     API_VERSION = '/v1'
     DB_USER = os.environ.get('POSTGRES_USER')
     DB_PASS = os.environ.get('POSTGRES_PASSWORD')
@@ -17,11 +17,11 @@ class Base(object):
     }
 
 
-class Development(Base):
+class Development(BaseConfig):
     SQL_ECHO = False
     LOG_LEVEL = logging.INFO
 
 
-class Testing(Base):
+class Testing(BaseConfig):
     SQL_ECHO = True
     LOG_LEVEL = logging.DEBUG

@@ -1,16 +1,19 @@
-from sqlalchemy import create_engine
+import os
+from datetime import datetime
+
+from sqlalchemy import create_engine, Column, DateTime
 from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy_utils import database_exists, create_database
 
-from config import Base
+from config import BaseConfig
 from api.responses.errors import DataBaseConnecitonError
 
 
 def initialize_db():
     try:
-        engine = create_engine(Base.DATABASE)
+        engine = create_engine(BaseConfig.DATABASE)
         if not database_exists(engine.url):
             create_database(engine.url)
     except SQLAlchemyError:
@@ -18,7 +21,7 @@ def initialize_db():
 
 
 Engine = create_engine(
-    Base.DATABASE,
+    BaseConfig.DATABASE,
     encoding="utf-8",
     echo=False
 )
@@ -31,4 +34,18 @@ Session = scoped_session(
     )
 )
 
-DB_Base = declarative_base()
+class Base(object):
+    @declared_attr
+    def __tablename__(cls):
+        return cls.__name__.lower()
+
+    __table_args__ = {'schema': os.environ.get('DB_SCHEMA', None)}
+
+    created_at = Column(DateTime, default=datetime.now, nullable=False)
+    updated_at = Column(DateTime, default=datetime.now, nullable=False)
+
+    def __init__(self, created_at, updated_at):
+        self.created_at = created_at
+        self.updated_at = updated_at
+
+ModelBase = declarative_base(cls=Base)

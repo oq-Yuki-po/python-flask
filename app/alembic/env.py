@@ -7,8 +7,8 @@ from sqlalchemy_utils import database_exists, create_database
 
 from alembic import context
 
-from config import Base
-from database.models.setting import DB_Base, initialize_db
+from config import BaseConfig
+from database.models.setting import ModelBase, initialize_db
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -20,7 +20,7 @@ fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-target_metadata = DB_Base.metadata
+target_metadata = ModelBase.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -40,7 +40,7 @@ def run_migrations_offline():
     script output.
 
     """
-    url = Base.DATABASE
+    url = BaseConfig.DATABASE
     context.configure(
         url=url, target_metadata=target_metadata, literal_binds=True)
 
@@ -55,12 +55,12 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
-    url = Base.DATABASE
-    connectable = create_engine(Base.DATABASE)
+    url = BaseConfig.DATABASE
+    connectable = create_engine(url)
 
     with connectable.connect() as connection:
         context.configure(
-            url=Base.DATABASE,
+            url=url,
             connection=connection,
             target_metadata=target_metadata
         )

@@ -1,10 +1,10 @@
 from sqlalchemy import Column, String, Integer
 
-from database.models.setting import Engine
+from database.models.setting import Engine, ModelBase
 from database.models.base import DefaultBase
 
 
-class User(DefaultBase):
+class User(ModelBase):
     """
     UserModel
     """

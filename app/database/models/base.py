@@ -2,10 +2,10 @@ import os
 from datetime import datetime
 from sqlalchemy import Column, DateTime
 
-from database.models.setting import DB_Base
+from database.models.setting import ModelBase
 
 
-class DefaultBase(DB_Base):
+class DefaultBase(ModelBase):
     """
     DefaultBase
     """
