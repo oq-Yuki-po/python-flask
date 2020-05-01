@@ -1,17 +1,17 @@
 import pytest
 
 from database.models import User, File, FileDetail
-from api_requests.factories import FileFactory, FileDetailFactory
+from api.requests.factories import FileFactory, FileDetailFactory
 
 
 @pytest.mark.usefixtures('create_all_tables')
-class TestFilesApi():
+class TestFileApi():
 
     def test_post(self, app_client, count_records):
         file_details = FileDetailFactory.build_batch(10)
         payload = FileFactory(details=file_details).to_json(ensure_ascii=False)
 
-        response = app_client.post('/files',
+        response = app_client.post('/v1/file',
                                    data=payload)
 
         assert response.status_code == 200
