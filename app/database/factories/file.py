@@ -3,8 +3,7 @@ from datetime import datetime
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
-from database.models.setting import Session
-from database.models import File
+from database.models import Session, File
 from database.factories import UserFactory
 
 

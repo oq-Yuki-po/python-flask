@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 
-from database.models.setting import Session
+from database.models import Session
 
 def make_flask_app(name):
 

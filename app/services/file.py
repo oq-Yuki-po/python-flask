@@ -4,8 +4,7 @@ from datetime import datetime
 from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 from api.requests.classes import File as ApiFile
 from api.responses.errors import DataBaseConnecitonError, DataBaseApiError
-from database.models import FileDetail, File, User
-from database.models.setting import Session
+from database.models import Session, FileDetail, File, User
 
 
 class FileService():
