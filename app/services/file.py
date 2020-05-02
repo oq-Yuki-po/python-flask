@@ -1,9 +1,9 @@
 import typing as tp
 from datetime import datetime
 
-from sqlalchemy.exc import SQLAlchemyError, DataError
+from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 from api.requests.classes import File as ApiFile
-from api.responses.errors import DataBaseConnecitonError, DataBaseDataError
+from api.responses.errors import DataBaseConnecitonError, DataBaseApiError
 from database.models import FileDetail, File, User
 from database.models.setting import Session
 
@@ -19,26 +19,23 @@ class FileService():
         try:
             session = Session()
 
-            created_at = datetime.now()
+            user = User(name=self.file.user_name)
 
-            user = User(name=self.file.user_name,
-                        created_at=created_at, updated_at=created_at)
-
-            file = File(users=user, name=self.file.name,
-                        created_at=created_at, updated_at=created_at)
+            file = File(user=user, name=self.file.name)
 
             session.add(user)
             session.add(file)
 
-            details = [{'row': d.row, 'contents': d.contents, 'updated_at': created_at,
-                        'created_at': created_at} for d in self.file.details]
+            session.flush()
+
+            details = [{'row': d.row, 'contents': d.contents, 'file_id': file.id} for d in self.file.details]
             session.execute(FileDetail.__table__.insert(), details)
 
             session.commit()
 
             result = {'message': 'Success'}
-        except DataError:
-            raise DataBaseDataError
+        except DBAPIError:
+            raise DataBaseApiError
         except SQLAlchemyError:
             raise DataBaseConnecitonError
 

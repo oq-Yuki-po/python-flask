@@ -13,7 +13,7 @@ class RequestJsonValidationError(Exception):
 class DataBaseConnecitonError(Exception):
     pass
 
-class DataBaseDataError(Exception):
+class DataBaseApiError(Exception):
     pass
 
 
@@ -30,8 +30,8 @@ Errors = {
         "message": MESSAGE['DataBaseConnecitonError'],
         "status": status.HTTP_500_INTERNAL_SERVER_ERROR
     },
-    "DataBaseDataError":{
-        "message":MESSAGE['DataBaseDataError'],
+    "DataBaseApiError":{
+        "message":MESSAGE['DataBaseApiError'],
         "status":status.HTTP_500_INTERNAL_SERVER_ERROR
     }
 }
