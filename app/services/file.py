@@ -1,5 +1,4 @@
 import typing as tp
-from datetime import datetime
 
 from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 from api.requests.classes import File as ApiFile
