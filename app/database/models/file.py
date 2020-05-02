@@ -13,11 +13,11 @@ class File(ModelBase):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey(User.id))
-    name = Column(String(255))
-    users = relationship('User', backref="files")
+    name = Column(String(255), nullable=False)
+    user = relationship('User', backref="files")
 
-    def __init__(self, users, name, created_at, updated_at):
-        self.users = users
+    def __init__(self, user, name, created_at=None, updated_at=None):
+        self.users = user
         self.name = name
         self.created_at = created_at
         self.updated_at = updated_at
