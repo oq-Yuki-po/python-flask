@@ -1,4 +1,4 @@
-"""Added account table
+"""Added a not null constraint
 
 Revision ID: 3495bc47a8ce
 Revises: bff8b5e19020
