@@ -1,11 +1,11 @@
 from sqlalchemy import Column, String, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
-from database.models.setting import Engine, ModelBase
+from database.models.setting import Engine, BaseModel
 from database.models import File
 
 
-class FileDetail(ModelBase):
+class FileDetail(BaseModel):
     """
     FileDetailModel
     """
@@ -26,4 +26,4 @@ class FileDetail(ModelBase):
 
 
 if __name__ == "__main__":
-    ModelBase.metadata.create_all(bind=Engine)
+    BaseModel.metadata.create_all(bind=Engine)

@@ -6,7 +6,7 @@ from flask.testing import FlaskClient
 import pytest
 
 from main import app
-from database.models.setting import Engine, ModelBase, Session
+from database.models.setting import Engine, BaseModel, Session
 
 
 class CustomClient(FlaskClient):
@@ -36,10 +36,10 @@ def create_test_environment(request):
 
 @pytest.fixture()
 def create_all_tables(request):
-    ModelBase.metadata.create_all(Engine)
+    BaseModel.metadata.create_all(Engine)
 
     def drop_all_tables():
-        ModelBase.metadata.drop_all(Engine)
+        BaseModel.metadata.drop_all(Engine)
 
     request.addfinalizer(drop_all_tables)
 
@@ -57,7 +57,7 @@ def app_client():
 def count_records():
     def _count_records(model):
         session = Session()
-        count = session.query(model).count()
+        count = model.query.count()
         session.close()
         return count
     return _count_records

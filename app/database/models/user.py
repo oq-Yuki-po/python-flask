@@ -1,9 +1,9 @@
 from sqlalchemy import Column, String, Integer
 
-from database.models.setting import Engine, ModelBase
+from database.models.setting import Engine, BaseModel
 
 
-class User(ModelBase):
+class User(BaseModel):
     """
     UserModel
     """
@@ -19,4 +19,4 @@ class User(ModelBase):
 
 
 if __name__ == "__main__":
-    ModelBase.metadata.create_all(bind=Engine)
+    BaseModel.metadata.create_all(bind=Engine)

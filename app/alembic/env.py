@@ -8,7 +8,7 @@ from sqlalchemy_utils import database_exists, create_database
 from alembic import context
 
 from config import BaseConfig
-from database.models.setting import ModelBase, initialize_db
+from database.models.setting import BaseModel, initialize_db
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -20,7 +20,7 @@ fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-target_metadata = ModelBase.metadata
+target_metadata = BaseModel.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

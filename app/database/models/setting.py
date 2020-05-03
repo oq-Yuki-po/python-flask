@@ -52,4 +52,6 @@ class Base(object):
     def updated_at(cls):
         return deferred(Column(DateTime, default=datetime.now, nullable=False))
 
-ModelBase = declarative_base(cls=Base)
+BaseModel = declarative_base(cls=Base)
+
+BaseModel.query = Session.query_property()
