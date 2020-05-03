@@ -2,7 +2,7 @@ import typing as tp
 
 from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 from api.requests.classes import File as ApiFile
-from api.responses.errors import DataBaseConnecitonError, DataBaseApiError
+from api.responses.errors import DataBaseConnecitonError, DataBaseApiError, InternalServerError
 from database.models import Session, FileDetail, File, User
 
 
@@ -36,6 +36,8 @@ class FileService():
             raise DataBaseApiError
         except SQLAlchemyError:
             raise DataBaseConnecitonError
+        except Exception:
+            raise InternalServerError
         finally:
             session.close()
 
