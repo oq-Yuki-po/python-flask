@@ -36,5 +36,7 @@ class FileService():
             raise DataBaseApiError
         except SQLAlchemyError:
             raise DataBaseConnecitonError
+        finally:
+            session.close()
 
         return result
