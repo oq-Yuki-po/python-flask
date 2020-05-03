@@ -6,7 +6,7 @@ from flask.testing import FlaskClient
 import pytest
 
 from main import app
-from database.models.setting import Engine, BaseModel, Session
+from database.models.setting import Engine, BaseModel, session
 
 
 class CustomClient(FlaskClient):
@@ -56,7 +56,6 @@ def app_client():
 @pytest.fixture()
 def count_records():
     def _count_records(model):
-        session = Session()
         count = model.query.count()
         session.close()
         return count

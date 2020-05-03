@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 
-from database.models import Session
+from database.models import session
 
 def make_flask_app(name):
 
@@ -24,7 +24,7 @@ def before_request():
 
 def after_request(response):
 
-    Session.remove()
+    session.remove()
 
     return response
 

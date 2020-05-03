@@ -3,7 +3,7 @@ from datetime import datetime
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
-from database.models import Session, User
+from database.models import session, User
 
 
 class UserFactory(SQLAlchemyModelFactory):
@@ -11,7 +11,7 @@ class UserFactory(SQLAlchemyModelFactory):
 
         model = User
 
-        sqlalchemy_session = Session
+        sqlalchemy_session = session
 
         sqlalchemy_session_persistence = 'commit'
 

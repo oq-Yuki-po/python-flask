@@ -29,7 +29,7 @@ Engine = create_engine(
     echo=False
 )
 
-Session = scoped_session(
+session = scoped_session(
     sessionmaker(
         autocommit=False,
         autoflush=False,
@@ -54,4 +54,4 @@ class Base(object):
 
 BaseModel = declarative_base(cls=Base)
 
-BaseModel.query = Session.query_property()
+BaseModel.query = session.query_property()

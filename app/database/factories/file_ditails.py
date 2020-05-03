@@ -3,7 +3,7 @@ from datetime import datetime
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
-from database.models import Session, FileDetail
+from database.models import session, FileDetail
 from database.factories import FileFactory
 
 
@@ -12,7 +12,7 @@ class FileDetailFactory(SQLAlchemyModelFactory):
 
         model = FileDetail
 
-        sqlalchemy_session = Session
+        sqlalchemy_session = session
 
         sqlalchemy_session_persistence = 'commit'
 

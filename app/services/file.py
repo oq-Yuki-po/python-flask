@@ -3,7 +3,7 @@ import typing as tp
 from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 from api.requests.classes import File as ApiFile
 from api.responses.errors import DataBaseConnecitonError, DataBaseApiError, InternalServerError
-from database.models import Session, FileDetail, File, User
+from database.models import session, FileDetail, File, User
 
 
 class FileService():
@@ -15,7 +15,6 @@ class FileService():
     def save_file(self) -> dict:
 
         try:
-            session = Session()
 
             user = User(name=self.file.user_name)
 
